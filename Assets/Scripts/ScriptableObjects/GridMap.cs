@@ -4,7 +4,10 @@ using UnityEngine;
 
 [CreateAssetMenu]
 public class GridMap : ScriptableObject {
-    public string grid;
-    public Tower[] availableTowers;
+    public string Grid;
+    public int ScoreToUnlock;
+    public Tower[] AvailableTowers;
     public EnemyWave[] EnemyWaves;
+    public GridTile[] Tiles;
+    public GridTile GroundTile;
 }

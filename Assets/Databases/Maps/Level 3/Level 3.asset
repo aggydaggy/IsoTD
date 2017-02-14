@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92468870298e03549ab797ba227755ca, type: 3}
   m_Name: Level 3
   m_EditorClassIdentifier: 
-  grid: '9 ^ 10, 9 ^ 10, 9 ^ 10, 9 ^ 10, 0 ^ 20, 2 ^ 20, 0 ^ 15, 0 ^ 20, 2 ^ 20, 0
+  Grid: '9 ^ 10, 9 ^ 10, 9 ^ 10, 9 ^ 10, 0 ^ 20, 2 ^ 20, 0 ^ 15, 0 ^ 20, 2 ^ 20, 0
     ^ 20, 0 ^ 15, 0 ^ 20, 0 ^ 20 | 0 ^ 10, 3 ^ 13, 0 ^ 10, 9 ^ 10, 0 ^ 10, 0 ^ 10,
     0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10 | 0 ^ 10, 1 ^ 13, 0 ^ 10,
     9 ^ 10, 2 ^ 10, 1 ^ 10, 1 ^ 10, 1 ^ 10, 1 ^ 10, 1 ^ 10, 1 ^ 10, 1 ^ 10, 0 ^ 10
@@ -29,9 +29,17 @@ MonoBehaviour:
     0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10
     | 0 ^ 15, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^
     10, 2 ^ 15, 0 ^ 15, 2 ^ 15 '
-  availableTowers:
+  ScoreToUnlock: 2000
+  AvailableTowers:
   - {fileID: 11400000, guid: bbbd8615137c7194d8c74487531af0b9, type: 2}
   - {fileID: 11400000, guid: 37b771f0a64ffa744a586f4930f268e0, type: 2}
   - {fileID: 11400000, guid: 318aaa17c97aa914590aaf8d433d08b4, type: 2}
   - {fileID: 11400000, guid: 01a33900393d1b74a8d63f383af14235, type: 2}
   EnemyWaves: []
+  Tiles:
+  - {fileID: 11400000, guid: 681eeeadc7e7cb14a9851bd3c87a86a8, type: 2}
+  - {fileID: 11400000, guid: 46bc53a85ecb3d541a5a617b859e027a, type: 2}
+  - {fileID: 11400000, guid: 738445afe0d30de439b891ecf0e11aa3, type: 2}
+  - {fileID: 11400000, guid: 1615d37173c0bf7429db1945bfa29d96, type: 2}
+  - {fileID: 11400000, guid: c420e7e2eb91de245ac259560d142623, type: 2}
+  GroundTile: {fileID: 11400000, guid: 3ebcdb2bd23d45d4ab086efc37ef5515, type: 2}

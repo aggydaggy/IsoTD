@@ -38,8 +38,8 @@ public class Buildable : MonoBehaviour {
     {
         if (tileInfo.Occupant == null)
         {
-            int randomIndex = Random.Range(0, manager.GetMapInfo().availableTowers.Length);
-            tileInfo.Occupant = Instantiate(manager.GetMapInfo().availableTowers[randomIndex].baseTower, transform.position + (Vector3.up * tileInfo.BaseTileInfo.Y), Quaternion.Euler(0f, 0f, 0f));
+            int randomIndex = Random.Range(0, manager.GetMapInfo().AvailableTowers.Length);
+            tileInfo.Occupant = Instantiate(manager.GetMapInfo().AvailableTowers[randomIndex].baseTower, transform.position + (Vector3.up * tileInfo.BaseTileInfo.Y), Quaternion.Euler(0f, 0f, 0f));
             tileInfo.IsOccupied = true;
         }
     }

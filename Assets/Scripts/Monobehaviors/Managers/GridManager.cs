@@ -7,10 +7,8 @@ using UnityEngine.UI;
 public class GridManager : MonoBehaviour {
 
     public GridMapDB MapsDB;
-    public GridTileDB TilesDB;
     public int MapToLoad;
     public int StartingGold;
-    public int GroundTileIndex;
 
     GridMap currentMap;
     GameObject[,] tileGrid;
@@ -25,17 +23,17 @@ public class GridManager : MonoBehaviour {
         StartTiles.Clear();
         GoalTiles.Clear();
         currentMap = MapsDB.Maps[MapToLoad];
-        StartCoroutine(CreateGrid(currentMap));
+        StartCoroutine(CreateGrid());
 	}
 
-    IEnumerator CreateGrid(GridMap gridMap)
+    IEnumerator CreateGrid()
     {
         WaitForSeconds wait = new WaitForSeconds(0.005f);
-        string[] gridrows = gridMap.grid.Split('|');
+        string[] gridrows = currentMap.Grid.Split('|');
         rows = gridrows.Length;
         cols = gridrows[0].Split(',').Length;
         tileGrid = new GameObject[rows,cols];
-        GridTile groundTile = TilesDB.Tiles[GroundTileIndex];
+        GridTile groundTile = currentMap.GroundTile;
         for (int i = 0; i < gridrows.Length; i++)
         {
             string[] gridcols = gridrows[i].Split(',');
@@ -44,7 +42,7 @@ public class GridManager : MonoBehaviour {
                 string[] gridPositionMakeup = gridcols[j].Split('^');
                 int numOfGround = gridPositionMakeup.Length > 1 ? int.Parse(gridPositionMakeup[1]) : 1;
                 int tileNum = int.Parse(gridPositionMakeup[0]);
-                GridTile tile = tileNum >= 0 && tileNum < TilesDB.Tiles.Length ? TilesDB.Tiles[tileNum] : null;
+                GridTile tile = tileNum >= 0 && tileNum < currentMap.Tiles.Length ? currentMap.Tiles[tileNum] : null;
                 if (tile != null)
                 {
                     GameObject prefab = tile.Tile;
