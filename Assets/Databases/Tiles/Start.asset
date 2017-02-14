@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403814d1360e35c49be4ec6953770884, type: 3}
+  m_Name: Start
+  m_EditorClassIdentifier: 
+  Name: Start
+  X: 8
+  Y: 1
+  Z: 8
+  Tile: {fileID: 1634683043207318, guid: b9767710d1a129048b9c1bf303e8677c, type: 2}

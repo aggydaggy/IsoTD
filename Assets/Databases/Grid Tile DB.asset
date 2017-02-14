@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b4687b38e2848418ee23f2ffc378f8, type: 3}
+  m_Name: Grid Tile DB
+  m_EditorClassIdentifier: 
+  Tiles:
+  - {fileID: 11400000, guid: 681eeeadc7e7cb14a9851bd3c87a86a8, type: 2}
+  - {fileID: 11400000, guid: 46bc53a85ecb3d541a5a617b859e027a, type: 2}
+  - {fileID: 11400000, guid: 738445afe0d30de439b891ecf0e11aa3, type: 2}
+  - {fileID: 11400000, guid: 1615d37173c0bf7429db1945bfa29d96, type: 2}
+  - {fileID: 11400000, guid: c420e7e2eb91de245ac259560d142623, type: 2}
+  - {fileID: 11400000, guid: 3ebcdb2bd23d45d4ab086efc37ef5515, type: 2}
