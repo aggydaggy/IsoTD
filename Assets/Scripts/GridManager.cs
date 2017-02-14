@@ -11,7 +11,6 @@ public class GridManager : MonoBehaviour {
     public int MapToLoad;
     public int StartingGold;
     public int GroundTileIndex;
-    //public Text DebugTextPrefab;
 
     GridMap currentMap;
     GameObject[,] tileGrid;
@@ -21,17 +20,7 @@ public class GridManager : MonoBehaviour {
     int cols = 0;
     int currentWave = 0;
     bool isWaveRunning = false;
-
-    //GameObject debugTile;
-    //int debugVert = 0;
-    //Canvas debugCanvas;
-
-    private void Awake()
-    {
-        //debugCanvas = GetComponentInChildren<Canvas>();
-    }
-
-    // Use this for initialization
+    
     void Start () {
         StartTiles.Clear();
         GoalTiles.Clear();
@@ -98,7 +87,6 @@ public class GridManager : MonoBehaviour {
         }
         StartCoroutine(RampRoadTiles());
         WeightTiles();
-        //PrintDebugText();
     }
 
     IEnumerator RampRoadTiles()
@@ -189,7 +177,6 @@ public class GridManager : MonoBehaviour {
                             TileInfo rightInfo = tileRight.GetComponent<TileInfo>();
                             if (rightInfo != null && rightInfo.IsWalkable && rightInfo.ElevationLevels != tileInfo.ElevationLevels)
                             {
-                                //if (debugTile == null) debugTile = tile;
                                 int change = rightInfo.ElevationLevels > tileInfo.ElevationLevels ? 1 : -1;
                                 int floorsUp = Mathf.Abs(rightInfo.ElevationLevels - tileInfo.ElevationLevels);
                                 int heightPerFloor = (int)floorUnderTile.transform.localScale.y;
@@ -328,39 +315,6 @@ public class GridManager : MonoBehaviour {
                 SpawnWave();
             }
         }
-
-        //if (Input.GetKeyDown(KeyCode.RightArrow))
-        //{
-        //    Debug.Log("Vert #: " + ++debugVert);
-        //}
-        //if (Input.GetKeyDown(KeyCode.LeftArrow))
-        //{
-        //    Debug.Log("Vert #: " + --debugVert);
-        //}
-        //if (Input.GetMouseButtonDown(1))
-        //{
-        //    Debug.Log("Lowering vert " + debugVert);
-
-        //    Mesh mesh = debugTile.GetComponent<MeshFilter>().mesh;
-        //    Vector3[] vertices = mesh.vertices;
-
-        //    vertices[debugVert].y -= 10;
-        //    mesh.vertices = vertices;
-        //    mesh.RecalculateBounds();
-        //    mesh.RecalculateNormals();
-        //}
-        //if (Input.GetMouseButtonDown(2))
-        //{
-        //    Debug.Log("Raising vert " + debugVert);
-
-        //    Mesh mesh = debugTile.GetComponent<MeshFilter>().mesh;
-        //    Vector3[] vertices = mesh.vertices;
-
-        //    vertices[debugVert].y += 10;
-        //    mesh.vertices = vertices;
-        //    mesh.RecalculateBounds();
-        //    mesh.RecalculateNormals();
-        //}
     }
 
     private void SpawnWave()
