@@ -18,5 +18,5 @@ MonoBehaviour:
   Speed: 25
   HitPoints: 100
   Enemies:
-  - {fileID: 1661501331803772, guid: 219965509b7074a4a90ca4a8d52fe07a, type: 2}
-  - {fileID: 1661501331803772, guid: 558f0a765faf5c54fbfba659a31c6556, type: 2}
+  - {fileID: 11400000, guid: a33a20c845882e74a9c11b4e8d503896, type: 2}
+  - {fileID: 11400000, guid: 94444cc808b538a4b9f203e36f2e464e, type: 2}

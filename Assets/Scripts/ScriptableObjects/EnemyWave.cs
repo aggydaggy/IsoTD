@@ -11,5 +11,5 @@ public class EnemyWave : ScriptableObject {
     public int ExpPerKill;
     public float Speed;
     public double HitPoints;
-    public GameObject[] Enemies;
+    public Enemy[] Enemies;
 }

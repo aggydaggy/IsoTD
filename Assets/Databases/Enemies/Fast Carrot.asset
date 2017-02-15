@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51138e8324bdc74abb120b6f5fb18ec, type: 3}
+  m_Name: Fast Carrot
+  m_EditorClassIdentifier: 
+  Name: Fast Carrot
+  BaseHealth: 100
+  BaseExp: 50
+  BaseGold: 35
+  BaseSpeed: 20
+  BaseEnemy: {fileID: 1661501331803772, guid: 558f0a765faf5c54fbfba659a31c6556, type: 2}

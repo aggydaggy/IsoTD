@@ -9,6 +9,7 @@ public class GridManager : MonoBehaviour {
     public GridMapDB MapsDB;
     public int MapToLoad;
     public int StartingGold;
+    public int TimeModifier = 1;
 
     GridMap currentMap;
     GameObject[,] tileGrid;
@@ -335,7 +336,7 @@ public class GridManager : MonoBehaviour {
             {
                 Vector2 spawnTile = StartTiles[Random.Range(0, StartTiles.Count)];
                 GameObject spawnTileObject = tileGrid[(int)spawnTile.x, (int)spawnTile.y];
-                GameObject enemySpawned = Instantiate(wave.Enemies[j], spawnTileObject.transform.position + (Vector3.up * 2), Quaternion.Euler(0f, 0f, 0f));
+                GameObject enemySpawned = Instantiate(wave.Enemies[j].BaseEnemy, spawnTileObject.transform.position + (Vector3.up * 2), Quaternion.Euler(0f, 0f, 0f));
                 WalkToGoal enemyWalk = enemySpawned.GetComponent<WalkToGoal>();
                 enemyWalk.SetValues(wave, spawnTile);
             }

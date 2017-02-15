@@ -119,8 +119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MapsDB: {fileID: 11400000, guid: e648fc1e4ca78df478677eaaeb9d9dd0, type: 2}
-  MapToLoad: 1
+  MapToLoad: 2
   StartingGold: 10000
+  TimeModifier: 1
 --- !u!4 &1215692925
 Transform:
   m_ObjectHideFlags: 0
