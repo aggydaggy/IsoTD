@@ -119,9 +119,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MapsDB: {fileID: 11400000, guid: e648fc1e4ca78df478677eaaeb9d9dd0, type: 2}
+  DecorationPrefab: {fileID: 1661501331803772, guid: 65b45070cf7adce42826e562a3b88591,
+    type: 2}
   MapToLoad: 2
   StartingGold: 10000
-  TimeModifier: 1
 --- !u!4 &1215692925
 Transform:
   m_ObjectHideFlags: 0
@@ -147,6 +148,7 @@ GameObject:
   - component: {fileID: 1219545797}
   - component: {fileID: 1219545796}
   - component: {fileID: 1219545795}
+  - component: {fileID: 1219545800}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -222,6 +224,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 60, z: 0}
+--- !u!45 &1219545800
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1219545794}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 44f78129fc5c6664bbc96010e48cea0e, type: 2}
 --- !u!1 &1848084141
 GameObject:
   m_ObjectHideFlags: 0

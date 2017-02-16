@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class GridManager : MonoBehaviour {
 
     public GridMapDB MapsDB;
+    public GameObject DecorationPrefab;
     public int MapToLoad;
     public int StartingGold;
-    public int TimeModifier = 1;
 
     GridMap currentMap;
     GameObject[,] tileGrid;
@@ -35,10 +35,10 @@ public class GridManager : MonoBehaviour {
         cols = gridrows[0].Split(',').Length;
         tileGrid = new GameObject[rows,cols];
         GridTile groundTile = currentMap.GroundTile;
-        for (int i = 0; i < gridrows.Length; i++)
+        for (int i = 0; i < rows; i++)
         {
             string[] gridcols = gridrows[i].Split(',');
-            for (int j = 0; j < gridcols.Length; j++)
+            for (int j = 0; j < cols; j++)
             {
                 string[] gridPositionMakeup = gridcols[j].Split('^');
                 int numOfGround = gridPositionMakeup.Length > 1 ? int.Parse(gridPositionMakeup[1]) : 1;
@@ -81,6 +81,31 @@ public class GridManager : MonoBehaviour {
                 else
                 {
                     tileGrid[i, j] = null;
+                }
+            }
+        }
+
+        //Place decorations
+
+        string[] decorationRows = currentMap.DecorationGrid.Split('|');
+        for (int i = 0; i < rows; i++)
+        {
+            string[] decorationCols = decorationRows[i].Split(',');
+            for (int j = 0; j < cols; j++)
+            {
+                int decorationNnum = int.Parse(decorationCols[j]);
+                if (decorationNnum >= 0 && decorationNnum < currentMap.Decorations.Length)
+                {
+                    GameObject tile = GetTile(i, j);
+                    if (tile != null)
+                    {
+                        TileInfo tileInfo = tile.GetComponent<TileInfo>();
+                        if (tileInfo != null)
+                        {
+                            GameObject decoration = Instantiate(DecorationPrefab, tile.transform.position + (Vector3.up * tileInfo.BaseTileInfo.Y), Quaternion.Euler(0f, 0f, 0f));
+                            decoration.GetComponent<SpriteRenderer>().sprite = currentMap.Decorations[decorationNnum];
+                        }
+                    }
                 }
             }
         }

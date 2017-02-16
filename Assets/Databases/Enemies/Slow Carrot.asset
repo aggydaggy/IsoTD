@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Slow Carrot
   m_EditorClassIdentifier: 
   Name: Slow Carrot
-  BaseHealth: 100
-  BaseExp: 25
-  BaseGold: 25
+  BaseHealth: 50
+  BaseExp: 50
+  BaseGold: 50
   BaseSpeed: 10
   BaseEnemy: {fileID: 1661501331803772, guid: 558f0a765faf5c54fbfba659a31c6556, type: 2}

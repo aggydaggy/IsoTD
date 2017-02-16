@@ -6,6 +6,7 @@ using UnityEngine;
 public class Tower : ScriptableObject {
 
     public string Name;
-    public GameObject baseTower;
-    public int baseCost;
+    public int BaseCost;
+    public int BaseRadius;
+    public GameObject BaseTower;
 }

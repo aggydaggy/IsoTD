@@ -14,6 +14,6 @@ MonoBehaviour:
   Name: Fast Carrot
   BaseHealth: 100
   BaseExp: 50
-  BaseGold: 35
+  BaseGold: 50
   BaseSpeed: 20
   BaseEnemy: {fileID: 1661501331803772, guid: 558f0a765faf5c54fbfba659a31c6556, type: 2}

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Name: Sniper
   m_EditorClassIdentifier: 
   Name: Sniper
-  baseTower: {fileID: 1661501331803772, guid: 8786992d10c9edf4796c2dd111df22ba, type: 2}
-  baseCost: 1250
+  BaseCost: 1250
+  BaseRadius: 100
+  BaseTower: {fileID: 1661501331803772, guid: 8786992d10c9edf4796c2dd111df22ba, type: 2}

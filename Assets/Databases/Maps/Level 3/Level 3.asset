@@ -29,13 +29,21 @@ MonoBehaviour:
     0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10
     | 0 ^ 15, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^ 10, 0 ^
     10, 2 ^ 15, 0 ^ 15, 2 ^ 15 '
+  DecorationGrid: 9,9,9,9,2,9,9,9,9,9,9,9,9| 9,9,9,9,9,9,9,9,1,9,9,9,9| 9,9,2,9,9,9,9,9,9,9,9,9,9|
+    9,9,9,9,9,9,9,9,9,9,9,9,9| 9,9,9,9,9,9,9,9,9,9,9,9,9| 9,9,9,9,9,9,9,9,9,9,9,9,1|
+    9,9,9,9,9,9,9,9,9,9,9,9,9| 9,9,9,9,9,9,9,9,9,9,9,9,9| 9,9,9,9,9,9,9,9,9,9,9,9,9|
+    9,9,9,9,9,9,9,9,9,9,9,9,9| 9,9,9,9,9,9,9,9,9,9,9,9,9| 9,9,9,9,9,9,9,9,9,9,9,9,9|
+    9,9,9,1,9,9,1,9,9,9,9,9,9
   ScoreToUnlock: 2000
   AvailableTowers:
   - {fileID: 11400000, guid: bbbd8615137c7194d8c74487531af0b9, type: 2}
   - {fileID: 11400000, guid: 37b771f0a64ffa744a586f4930f268e0, type: 2}
   - {fileID: 11400000, guid: 318aaa17c97aa914590aaf8d433d08b4, type: 2}
   - {fileID: 11400000, guid: 01a33900393d1b74a8d63f383af14235, type: 2}
-  EnemyWaves: []
+  EnemyWaves:
+  - {fileID: 11400000, guid: 080e47867e891dd4186949c3ab9aadf5, type: 2}
+  - {fileID: 11400000, guid: 59a656064244ca74aa1b7da3fc9f70fa, type: 2}
+  - {fileID: 11400000, guid: bd08121953d2536408807c06befa8d09, type: 2}
   Tiles:
   - {fileID: 11400000, guid: 681eeeadc7e7cb14a9851bd3c87a86a8, type: 2}
   - {fileID: 11400000, guid: 46bc53a85ecb3d541a5a617b859e027a, type: 2}
@@ -43,3 +51,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1615d37173c0bf7429db1945bfa29d96, type: 2}
   - {fileID: 11400000, guid: c420e7e2eb91de245ac259560d142623, type: 2}
   GroundTile: {fileID: 11400000, guid: 3ebcdb2bd23d45d4ab086efc37ef5515, type: 2}
+  Decorations:
+  - {fileID: 21300000, guid: 2f240a969b310564696c62da0f8a788d, type: 3}
+  - {fileID: 21300000, guid: 12636eaa65171574fbaed3469f96e1d4, type: 3}
+  - {fileID: 21300000, guid: e1451c98e8ffa2c40a912aff1e3b9ed9, type: 3}

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Name: Gun
   m_EditorClassIdentifier: 
   Name: Gun
-  baseTower: {fileID: 1661501331803772, guid: d8adc57bce3c35b43bf0e545f6ffb254, type: 2}
-  baseCost: 250
+  BaseCost: 425
+  BaseRadius: 60
+  BaseTower: {fileID: 1661501331803772, guid: d8adc57bce3c35b43bf0e545f6ffb254, type: 2}

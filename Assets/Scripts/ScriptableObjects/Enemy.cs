@@ -6,9 +6,9 @@ using UnityEngine;
 public class Enemy : ScriptableObject {
 
     public string Name;
-    public string BaseHealth;
-    public string BaseExp;
-    public string BaseGold;
-    public string BaseSpeed;
+    public double BaseHealth;
+    public double BaseExp;
+    public int BaseGold;
+    public float BaseSpeed;
     public GameObject BaseEnemy;
 }

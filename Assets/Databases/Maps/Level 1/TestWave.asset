@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: TestWave
   m_EditorClassIdentifier: 
   Count: 10
-  TimeBetweenSpawns: 2
+  TimeBetweenSpawns: 1
   MoneyPerKill: 50
   ExpPerKill: 50
-  Speed: 10
+  Speed: 25
   HitPoints: 100
   Enemies:
   - {fileID: 11400000, guid: 75e318f035e4449439d5315e3eaf2816, type: 2}

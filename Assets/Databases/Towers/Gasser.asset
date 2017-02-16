@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Name: Gasser
   m_EditorClassIdentifier: 
   Name: Gasser
-  baseTower: {fileID: 1661501331803772, guid: 3517a2e6de586cb4caf4a0a80ec4b313, type: 2}
-  baseCost: 1000
+  BaseCost: 1000
+  BaseRadius: 35
+  BaseTower: {fileID: 1661501331803772, guid: 3517a2e6de586cb4caf4a0a80ec4b313, type: 2}

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Slow Broccoli
   m_EditorClassIdentifier: 
   Name: Slow Broccoli
-  BaseHealth: 100
-  BaseExp: 25
-  BaseGold: 25
-  BaseSpeed: 10
+  BaseHealth: 150
+  BaseExp: 75
+  BaseGold: 50
+  BaseSpeed: 20
   BaseEnemy: {fileID: 1661501331803772, guid: 219965509b7074a4a90ca4a8d52fe07a, type: 2}
