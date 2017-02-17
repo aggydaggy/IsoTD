@@ -47,5 +47,9 @@ public class Buildable : MonoBehaviour {
                 towerBehavior.SetInitialValues(manager.GetMapInfo().AvailableTowers[randomIndex]);
             }
         }
+        else
+        {
+            Debug.Log("THIS SOLIDER HAS " + tileInfo.Occupant.GetComponent<TowerBehavior>().kills + " KILLS");
+        }
     }
 }

@@ -16,8 +16,8 @@ public class TowerBehavior : MonoBehaviour {
     GameObject target;
     Tower towerBase;
     bool isUpdating = false;
-    TargetPriority targetPriority = TargetPriority.FURTHEST;
-    int kills;
+    TargetPriority targetPriority = TargetPriority.CLOSEST;
+    public int kills { get; private set; }
 
     public void SetInitialValues(Tower tower)
     {
@@ -31,7 +31,7 @@ public class TowerBehavior : MonoBehaviour {
     {
         if (!isUpdating)
         {
-            GameObject previousTarget = target;
+            if (target == null) target = null;
             GameObject closest = null;
             GameObject furthest = null;
             GameObject strongest = null;
@@ -60,30 +60,36 @@ public class TowerBehavior : MonoBehaviour {
                     target = weakest;
                     break;
             }
+        }
+    }
 
-            if (target != null && target != previousTarget)
-            {
-                target.GetComponent<SpriteRenderer>().color = Color.green;
-                if (target != previousTarget)
-                {
-                    previousTarget.GetComponent<SpriteRenderer>().color = Color.white;
-                }
-            }
+    private void ShootTarget()
+    {
+        if(!isUpdating && target != null)
+        {
+            GameObject bullet = Instantiate(towerBase.BaseBullet,transform.position - towerBase.BulletSpawnOffset, Quaternion.Euler(0f, 0f, 0f));
+            bullet.GetComponent<SpriteRenderer>().color = towerBase.ShotColor;
+            bullet.GetComponent<BulletBehavior>().SetInitialValues(gameObject, towerBase, target);
         }
     }
 
 	// Use this for initialization
 	void Start () {
         InvokeRepeating("UpdateTarget", 0f, .3f);
+        InvokeRepeating("ShootTarget", 0f, towerBase.BaseTimeBetweenShots);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, towerBase.BaseRadius);
+    }
+
+    public void GotAKill()
+    {
+        kills += 1;
     }
 }

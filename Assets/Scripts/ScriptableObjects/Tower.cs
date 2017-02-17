@@ -9,4 +9,14 @@ public class Tower : ScriptableObject {
     public int BaseCost;
     public int BaseRadius;
     public GameObject BaseTower;
+    public GameObject BaseBullet;
+    public Vector3 BulletSpawnOffset;
+    public float BaseBulletSpeed;
+    public bool TargetsRadius;
+    public bool DoesShotAoeSpread;
+    public float BaseAoeSpreadRadius;
+    public double BaseAoeDamagePercentage;
+    public float BaseTimeBetweenShots;
+    public double BaseDamage;
+    public Color ShotColor;
 }

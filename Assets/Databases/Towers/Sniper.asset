@@ -15,3 +15,13 @@ MonoBehaviour:
   BaseCost: 1250
   BaseRadius: 100
   BaseTower: {fileID: 1661501331803772, guid: 8786992d10c9edf4796c2dd111df22ba, type: 2}
+  BaseBullet: {fileID: 1010154205084612, guid: 277498538aa999844a5e2555293c130e, type: 2}
+  BulletSpawnOffset: {x: -6, y: -6, z: 0}
+  BaseBulletSpeed: 450
+  TargetsRadius: 0
+  DoesShotAoeSpread: 0
+  BaseAoeSpreadRadius: 0
+  BaseAoeDamagePercentage: 0
+  BaseTimeBetweenShots: 4
+  BaseDamage: 125
+  ShotColor: {r: 0.5514706, g: 0.8219074, b: 1, a: 1}

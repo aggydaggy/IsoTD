@@ -15,7 +15,7 @@ MonoBehaviour:
   TimeBetweenSpawns: 0.5
   MoneyPerKill: 50
   ExpPerKill: 50
-  Speed: 40
+  Speed: 50
   HitPoints: 100
   Enemies:
   - {fileID: 11400000, guid: 94444cc808b538a4b9f203e36f2e464e, type: 2}

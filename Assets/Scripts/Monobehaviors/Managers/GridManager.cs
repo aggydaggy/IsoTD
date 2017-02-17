@@ -364,6 +364,7 @@ public class GridManager : MonoBehaviour {
                 GameObject enemySpawned = Instantiate(wave.Enemies[j].BaseEnemy, spawnTileObject.transform.position + (Vector3.up * 2), Quaternion.Euler(0f, 0f, 0f));
                 WalkToGoal enemyWalk = enemySpawned.GetComponent<WalkToGoal>();
                 enemyWalk.SetValues(wave, spawnTile);
+                enemySpawned.GetComponent<EnemyBehavior>().SetInitialValues(wave.Enemies[j]);
             }
             yield return spawnWait;
         }

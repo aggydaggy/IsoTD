@@ -28,7 +28,8 @@ public class WalkToGoal : MonoBehaviour {
     private void Update()
     {
         Vector3 dir = targetPosition - transform.position;
-        if(dir.z > 0)
+        float distanceToTravel = speed * Time.deltaTime;
+        if (dir.z > 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
         }
@@ -36,11 +37,9 @@ public class WalkToGoal : MonoBehaviour {
         {
             GetComponent<SpriteRenderer>().flipX = false;
         }
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-
-        if (Vector3.Distance(transform.position, targetPosition) < .5)
+        if (dir.magnitude <= distanceToTravel)
         {
-            if(hitExit)
+            if (hitExit)
             {
                 Destroy(gameObject); //TODO: Deal with losing life on a hit, dereference from any tower targets.
             }
@@ -49,6 +48,12 @@ public class WalkToGoal : MonoBehaviour {
                 SetNewTarget(targetTile);
             }
         }
+        else
+        {
+            transform.Translate(dir.normalized * distanceToTravel, Space.World);
+        }
+
+
     }
 
     public void SetNewTarget(Vector2 tile)
