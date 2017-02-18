@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92468870298e03549ab797ba227755ca, type: 3}
   m_Name: Level 2
   m_EditorClassIdentifier: 
+  Name: Moving Onward
   Grid: 3^30, 1^30, 1^30, 1^30, 1^30, 1^29, 1^29, 0^10, 0^10, 0^10, 0^10, 3^20, 1^20,
     1^10, 1^10| 0^10, 9^10, 9^10, 9^10, 9^10, 9^10, 1^29, 9^10, 9^10, 9^10, 9^10,
     9^10, 9^10, 9^10, 1^10| 9^10, 9^10, 9^10, 9^10, 9^10, 9^10, 1^28, 2^29, 2^29,
@@ -28,6 +29,7 @@ MonoBehaviour:
     1^16, 0^10, 1^2| 0^10, 0^10, 0^10, 0^10, 0^10, 0^10, 0^10, 0^10, 0^10, 0^10, 0^10,
     0^10, 1^15, 0^10, 1^2| 4^15, 1^15, 1^18, 1^18, 1^18, 1^19, 1^19, 1^12, 1^13, 1^13,
     1^14, 1^14, 1^15, 0^10, 4^2
+  DecorationGrid: 
   ScoreToUnlock: 1000
   AvailableTowers:
   - {fileID: 11400000, guid: 37b771f0a64ffa744a586f4930f268e0, type: 2}
@@ -46,3 +48,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1615d37173c0bf7429db1945bfa29d96, type: 2}
   - {fileID: 11400000, guid: c420e7e2eb91de245ac259560d142623, type: 2}
   GroundTile: {fileID: 11400000, guid: 3ebcdb2bd23d45d4ab086efc37ef5515, type: 2}
+  Decorations: []

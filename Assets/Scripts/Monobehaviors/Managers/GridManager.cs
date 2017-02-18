@@ -9,9 +9,9 @@ public class GridManager : MonoBehaviour {
     public GridMapDB MapsDB;
     public GameObject DecorationPrefab;
     public int MapToLoad;
-    public int StartingGold;
 
-    GridMap currentMap;
+    public GridMap currentMap { get; private set; }
+
     GameObject[,] tileGrid;
     List<Vector2> StartTiles = new List<Vector2>();
     List<Vector2> GoalTiles = new List<Vector2>();
@@ -20,12 +20,13 @@ public class GridManager : MonoBehaviour {
     int currentWave = 0;
     bool isWaveRunning = false;
     
-    void Start () {
+    public void LoadLevel()
+    {
         StartTiles.Clear();
         GoalTiles.Clear();
         currentMap = MapsDB.Maps[MapToLoad];
         StartCoroutine(CreateGrid());
-	}
+    }
 
     IEnumerator CreateGrid()
     {
@@ -86,29 +87,32 @@ public class GridManager : MonoBehaviour {
         }
 
         //Place decorations
-
-        string[] decorationRows = currentMap.DecorationGrid.Split('|');
-        for (int i = 0; i < rows; i++)
+        if (!string.IsNullOrEmpty(currentMap.DecorationGrid))
         {
-            string[] decorationCols = decorationRows[i].Split(',');
-            for (int j = 0; j < cols; j++)
+            string[] decorationRows = currentMap.DecorationGrid.Split('|');
+            for (int i = 0; i < rows; i++)
             {
-                int decorationNnum = int.Parse(decorationCols[j]);
-                if (decorationNnum >= 0 && decorationNnum < currentMap.Decorations.Length)
+                string[] decorationCols = decorationRows[i].Split(',');
+                for (int j = 0; j < cols; j++)
                 {
-                    GameObject tile = GetTile(i, j);
-                    if (tile != null)
+                    int decorationNnum = int.Parse(decorationCols[j]);
+                    if (decorationNnum >= 0 && decorationNnum < currentMap.Decorations.Length)
                     {
-                        TileInfo tileInfo = tile.GetComponent<TileInfo>();
-                        if (tileInfo != null)
+                        GameObject tile = GetTile(i, j);
+                        if (tile != null)
                         {
-                            GameObject decoration = Instantiate(DecorationPrefab, tile.transform.position + (Vector3.up * tileInfo.BaseTileInfo.Y), Quaternion.Euler(0f, 0f, 0f));
-                            decoration.GetComponent<SpriteRenderer>().sprite = currentMap.Decorations[decorationNnum];
+                            TileInfo tileInfo = tile.GetComponent<TileInfo>();
+                            if (tileInfo != null)
+                            {
+                                GameObject decoration = Instantiate(DecorationPrefab, tile.transform.position + (Vector3.up * tileInfo.BaseTileInfo.Y), Quaternion.Euler(0f, 0f, 0f));
+                                decoration.GetComponent<SpriteRenderer>().sprite = currentMap.Decorations[decorationNnum];
+                            }
                         }
                     }
                 }
             }
         }
+        
         StartCoroutine(RampRoadTiles());
         WeightTiles();
     }
@@ -370,17 +374,6 @@ public class GridManager : MonoBehaviour {
         }
         currentWave++;
         isWaveRunning = false;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.black;
-        Gizmos.DrawCube(new Vector3(-40f, 0f, -40f), new Vector3(80f, 1f, 80f));
-    }
-
-    public GridMap GetMapInfo()
-    {
-        return currentMap;
     }
 
     public GameObject GetTile(int x, int y)
