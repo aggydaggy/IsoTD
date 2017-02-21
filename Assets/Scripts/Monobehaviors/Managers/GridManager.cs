@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GridManager : MonoBehaviour {
 
     public GridMapDB MapsDB;
     public GameObject DecorationPrefab;
-    public int MapToLoad;
-
+    public int MapToLoad { get; private set; }
     public GridMap currentMap { get; private set; }
 
     GameObject[,] tileGrid;
@@ -19,9 +19,25 @@ public class GridManager : MonoBehaviour {
     int cols = 0;
     int currentWave = 0;
     bool isWaveRunning = false;
-    
+    bool mapLoaded = false;
+
+
+    public void SetMapToLoad(int load)
+    {
+        MapToLoad = load;
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if (level == 2) // 2 = map level
+        {
+            LoadLevel();
+        }
+    }
+
     public void LoadLevel()
     {
+        mapLoaded = false;
         StartTiles.Clear();
         GoalTiles.Clear();
         currentMap = MapsDB.Maps[MapToLoad];
@@ -264,6 +280,7 @@ public class GridManager : MonoBehaviour {
                 }
             }
         }
+        mapLoaded = true;
     }
 
 	void WeightTiles()
@@ -336,12 +353,9 @@ public class GridManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Testing
-        if(Input.GetKeyDown(KeyCode.Return))
+        if(Input.GetKeyDown(KeyCode.Return) && mapLoaded && !isWaveRunning)
         {
-            if (!isWaveRunning)
-            {
-                SpawnWave();
-            }
+            SpawnWave();
         }
     }
 
