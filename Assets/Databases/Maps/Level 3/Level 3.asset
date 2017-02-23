@@ -36,6 +36,8 @@ MonoBehaviour:
     9,9,9,9,9,9,9,9,9,9,9,9,9| 9,9,9,9,9,9,9,9,9,9,9,9,9| 9,9,9,9,9,9,9,9,9,9,9,9,9|
     9,9,9,1,9,9,1,9,9,9,9,9,9
   ScoreToUnlock: 2000
+  LivesInLevel: 15
+  StartingGold: 6400
   AvailableTowers:
   - {fileID: 11400000, guid: bbbd8615137c7194d8c74487531af0b9, type: 2}
   - {fileID: 11400000, guid: 37b771f0a64ffa744a586f4930f268e0, type: 2}

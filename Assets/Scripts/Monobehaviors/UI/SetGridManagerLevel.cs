@@ -6,6 +6,6 @@ public class SetGridManagerLevel : MonoBehaviour {
 
 	public void SetLoadLevel(int level)
     {
-        GameManager.Instance.gridManager.SetMapToLoad(level);
+        GameManager.Instance.mapManager.SetMapToLoad(level);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(TileInfo))]
 public class Buildable : MonoBehaviour {
@@ -9,14 +10,14 @@ public class Buildable : MonoBehaviour {
     Color defaultColor;
     Renderer rend;
     TileInfo tileInfo;
-    GridManager manager;
+    MapManager manager;
 
 	// Use this for initialization
 	void Start () {
         rend = GetComponent<Renderer>();
         tileInfo = GetComponent<TileInfo>();
         defaultColor = rend.material.color;
-        manager = FindObjectOfType<GridManager>();
+        manager = FindObjectOfType<MapManager>();
     }
 	
 	// Update is called once per frame
@@ -26,30 +27,29 @@ public class Buildable : MonoBehaviour {
 
     private void OnMouseEnter()
     {
-        rend.material.color = highlightColor;
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            rend.material.color = highlightColor;
+        }
     }
 
     private void OnMouseExit()
     {
-        rend.material.color = defaultColor;
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            rend.material.color = defaultColor;
+        }
     }
 
     private void OnMouseDown()
     {
-        if (tileInfo.Occupant == null)
+        if (tileInfo.Occupant == null && !EventSystem.current.IsPointerOverGameObject())
         {
-            int randomIndex = Random.Range(0, manager.currentMap.AvailableTowers.Length);
-            tileInfo.Occupant = Instantiate(manager.currentMap.AvailableTowers[randomIndex].BaseTower, transform.position + (Vector3.up * tileInfo.BaseTileInfo.Y), Quaternion.Euler(0f, 0f, 0f));
-            tileInfo.IsOccupied = true;
-            TowerBehavior towerBehavior = tileInfo.Occupant.GetComponent<TowerBehavior>();
-            if (towerBehavior != null)
+            AvailableBuildTowersList[] panel = Resources.FindObjectsOfTypeAll<AvailableBuildTowersList>();
+            if (panel.Length > 0)
             {
-                towerBehavior.SetInitialValues(manager.currentMap.AvailableTowers[randomIndex]);
+                panel[0].OpenMenu(gameObject);
             }
-        }
-        else
-        {
-            Debug.Log("THIS SOLIDER HAS " + tileInfo.Occupant.GetComponent<TowerBehavior>().kills + " KILLS");
         }
     }
 }

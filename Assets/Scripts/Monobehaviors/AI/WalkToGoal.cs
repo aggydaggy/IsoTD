@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(GridPosition))]
 public class WalkToGoal : MonoBehaviour {
 
-    GridManager manager;
+    MapManager manager;
     float speed;
     Vector2 targetTile;
     Vector3 targetPosition;
@@ -15,7 +15,7 @@ public class WalkToGoal : MonoBehaviour {
 
     private void Awake()
     {
-        manager = FindObjectOfType<GridManager>();
+        manager = FindObjectOfType<MapManager>();
     }
 
     public void SetValues(EnemyWave waveInfo, Vector2 beginTile)

@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4048335600017782}
   - component: {fileID: 114117641549820994}
   - component: {fileID: 114771287671646402}
+  - component: {fileID: 114612170320948598}
+  - component: {fileID: 114287822428061076}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -52,6 +54,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5642f1ef8228c54fa791113da55a204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MapsDB: {fileID: 11400000, guid: e648fc1e4ca78df478677eaaeb9d9dd0, type: 2}
+--- !u!114 &114287822428061076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911738277537840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ab35ae63c9aec4e8b9643fec763fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114612170320948598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911738277537840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb8e032ec2a4bd4fa37922755a14ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114771287671646402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -63,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3212c8e7309e44cb149727bb0107b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MapsDB: {fileID: 11400000, guid: e648fc1e4ca78df478677eaaeb9d9dd0, type: 2}
-  DecorationPrefab: {fileID: 0}
-  MapToLoad: 0
+  DecorationPrefab: {fileID: 1661501331803772, guid: 65b45070cf7adce42826e562a3b88591,
+    type: 2}
+  StartTiles: []
+  GoalTiles: []

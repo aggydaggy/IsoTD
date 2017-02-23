@@ -5,21 +5,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GridManager : MonoBehaviour {
+public class MapManager : MonoBehaviour {
 
-    public GridMapDB MapsDB;
     public GameObject DecorationPrefab;
     public int MapToLoad { get; private set; }
     public GridMap currentMap { get; private set; }
+    public List<Vector2> StartTiles = new List<Vector2>();
+    public List<Vector2> GoalTiles = new List<Vector2>();
+    public bool mapLoaded { get; private set; }
+    public int lives { get; set; }
+    public int gold { get; set; }
 
     GameObject[,] tileGrid;
-    List<Vector2> StartTiles = new List<Vector2>();
-    List<Vector2> GoalTiles = new List<Vector2>();
     int rows = 0;
     int cols = 0;
     int currentWave = 0;
-    bool isWaveRunning = false;
-    bool mapLoaded = false;
 
 
     public void SetMapToLoad(int load)
@@ -40,7 +40,10 @@ public class GridManager : MonoBehaviour {
         mapLoaded = false;
         StartTiles.Clear();
         GoalTiles.Clear();
-        currentMap = MapsDB.Maps[MapToLoad];
+        GameManager.Instance.spawnManager.InitiateSpawner();
+        currentMap = GameManager.Instance.MapsDB.Maps[MapToLoad];
+        lives = currentMap.LivesInLevel;
+        gold = currentMap.StartingGold;
         StartCoroutine(CreateGrid());
     }
 
@@ -352,43 +355,10 @@ public class GridManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        //Testing
-        if(Input.GetKeyDown(KeyCode.Return) && mapLoaded && !isWaveRunning)
-        {
-            SpawnWave();
-        }
+
     }
 
-    private void SpawnWave()
-    {
-        if(currentWave < currentMap.EnemyWaves.Length)
-        {
-            EnemyWave waveInfo = currentMap.EnemyWaves[currentWave];
-            StartCoroutine(RunWave(waveInfo));
-        }
-    }
-
-    IEnumerator RunWave(EnemyWave wave) 
-    {
-        isWaveRunning = true;
-        WaitForSeconds spawnWait = new WaitForSeconds(wave.TimeBetweenSpawns);
-        int spawnCount = wave.Count;
-        for (int i = spawnCount; i >= 0; i--)
-        {
-            for (int j = 0; j < wave.Enemies.Length; j++)
-            {
-                Vector2 spawnTile = StartTiles[Random.Range(0, StartTiles.Count)];
-                GameObject spawnTileObject = tileGrid[(int)spawnTile.x, (int)spawnTile.y];
-                GameObject enemySpawned = Instantiate(wave.Enemies[j].BaseEnemy, spawnTileObject.transform.position + (Vector3.up * 2), Quaternion.Euler(0f, 0f, 0f));
-                WalkToGoal enemyWalk = enemySpawned.GetComponent<WalkToGoal>();
-                enemyWalk.SetValues(wave, spawnTile);
-                enemySpawned.GetComponent<EnemyBehavior>().SetInitialValues(wave.Enemies[j]);
-            }
-            yield return spawnWait;
-        }
-        currentWave++;
-        isWaveRunning = false;
-    }
+   
 
     public GameObject GetTile(int x, int y)
     {

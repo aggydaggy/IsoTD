@@ -11,6 +11,7 @@ public class Tower : ScriptableObject {
     public GameObject BaseTower;
     public GameObject BaseBullet;
     public Vector3 BulletSpawnOffset;
+    public Sprite TowerSelectPortrait;
     public float BaseBulletSpeed;
     public bool TargetsRadius;
     public bool DoesShotAoeSpread;

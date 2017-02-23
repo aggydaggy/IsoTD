@@ -32,6 +32,8 @@ MonoBehaviour:
     0^10, 2^10, 0^10, 9^10
   DecorationGrid: 
   ScoreToUnlock: 0
+  LivesInLevel: 15
+  StartingGold: 3500
   AvailableTowers:
   - {fileID: 11400000, guid: bbbd8615137c7194d8c74487531af0b9, type: 2}
   - {fileID: 11400000, guid: 37b771f0a64ffa744a586f4930f268e0, type: 2}

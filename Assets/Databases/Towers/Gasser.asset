@@ -17,6 +17,8 @@ MonoBehaviour:
   BaseTower: {fileID: 1661501331803772, guid: 3517a2e6de586cb4caf4a0a80ec4b313, type: 2}
   BaseBullet: {fileID: 1010154205084612, guid: 277498538aa999844a5e2555293c130e, type: 2}
   BulletSpawnOffset: {x: -1.8, y: -7.75, z: 0}
+  TowerSelectPortrait: {fileID: 21300000, guid: 60a28659a5dc6f441a856bb40bc58e4e,
+    type: 3}
   BaseBulletSpeed: 150
   TargetsRadius: 1
   DoesShotAoeSpread: 0
