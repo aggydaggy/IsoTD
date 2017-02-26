@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class TileInfo : MonoBehaviour {
 
-    public bool IsOccupied;
+    public bool IsOccupied
+    {
+        get
+        {
+            return Occupant != null;
+        }
+    }
     public GameObject Occupant;
     public bool IsBuildable;
     public bool IsWalkable;

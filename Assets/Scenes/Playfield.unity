@@ -690,16 +690,16 @@ GameObject:
   - component: {fileID: 1555041532}
   - component: {fileID: 1555041534}
   - component: {fileID: 1555041533}
-  - component: {fileID: 1555041536}
   - component: {fileID: 1555041535}
   - component: {fileID: 1555041537}
+  - component: {fileID: 1555041536}
   m_Layer: 5
   m_Name: TowerSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1555041532
 RectTransform:
   m_ObjectHideFlags: 0
@@ -713,10 +713,10 @@ RectTransform:
   m_Father: {fileID: 1194071939}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0}
-  m_SizeDelta: {x: 690.6, y: 378.9}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 46}
+  m_SizeDelta: {x: 401, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1555041533
 MonoBehaviour:
@@ -773,7 +773,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1555041531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -2095666955, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -781,12 +781,13 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 237.86}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!114 &1555041537
 MonoBehaviour:
   m_ObjectHideFlags: 0

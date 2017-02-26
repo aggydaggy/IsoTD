@@ -41,7 +41,8 @@ public class WalkToGoal : MonoBehaviour {
         {
             if (hitExit)
             {
-                Destroy(gameObject); //TODO: Deal with losing life on a hit, dereference from any tower targets.
+                Destroy(gameObject);
+                GameManager.Instance.mapManager.lives -= 1;
             }
             else
             {

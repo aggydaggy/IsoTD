@@ -5,14 +5,15 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour {
 
     public Enemy baseEnemyStats { get; private set; }
-    [SerializeField]
+    public EnemyWave waveStats { get; private set; }
     public double currentHealth { get; private set; }
     GameObject lastHitBy = null;
 
-    public void SetInitialValues(Enemy enemy)
+    public void SetInitialValues(EnemyWave waveValues, Enemy enemy)
     {
         baseEnemyStats = enemy;
-        currentHealth = baseEnemyStats.BaseHealth;
+        waveStats = waveValues;
+        currentHealth = baseEnemyStats.BaseHealth + waveStats.HitPoints;
     }
 
 	// Use this for initialization
@@ -24,11 +25,7 @@ public class EnemyBehavior : MonoBehaviour {
 	void Update () {
 		if (currentHealth <= 0 && baseEnemyStats != null)
         {
-            Destroy(gameObject);
-            if (lastHitBy != null)
-            {
-                lastHitBy.GetComponent<TowerBehavior>().GotAKill();
-            }
+            KillEnemy();
         }
 	}
 
@@ -36,5 +33,15 @@ public class EnemyBehavior : MonoBehaviour {
     {
         lastHitBy = hitter;
         currentHealth -= hitterInfo.BaseDamage;
+    }
+
+    private void KillEnemy()
+    {
+        Destroy(gameObject);
+        if (lastHitBy != null)
+        {
+            lastHitBy.GetComponent<TowerBehavior>().GotAKill();
+            GameManager.Instance.mapManager.gold += baseEnemyStats.BaseGold + waveStats.MoneyPerKill;
+        }
     }
 }

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114771287671646402}
   - component: {fileID: 114612170320948598}
   - component: {fileID: 114287822428061076}
+  - component: {fileID: 114458886479253352}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -66,6 +67,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ab35ae63c9aec4e8b9643fec763fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114458886479253352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911738277537840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d718fa9c6ac6b714895dde6c419023d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114612170320948598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,3 +104,4 @@ MonoBehaviour:
     type: 2}
   StartTiles: []
   GoalTiles: []
+  BuildTiles: []

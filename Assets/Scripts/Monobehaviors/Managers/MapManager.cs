@@ -12,6 +12,7 @@ public class MapManager : MonoBehaviour {
     public GridMap currentMap { get; private set; }
     public List<Vector2> StartTiles = new List<Vector2>();
     public List<Vector2> GoalTiles = new List<Vector2>();
+    public List<Vector2> BuildTiles = new List<Vector2>();
     public bool mapLoaded { get; private set; }
     public int lives { get; set; }
     public int gold { get; set; }
@@ -19,7 +20,6 @@ public class MapManager : MonoBehaviour {
     GameObject[,] tileGrid;
     int rows = 0;
     int cols = 0;
-    int currentWave = 0;
 
 
     public void SetMapToLoad(int load)
@@ -41,6 +41,7 @@ public class MapManager : MonoBehaviour {
         StartTiles.Clear();
         GoalTiles.Clear();
         GameManager.Instance.spawnManager.InitiateSpawner();
+        GameManager.Instance.towerManager.InitializeValues();
         currentMap = GameManager.Instance.MapsDB.Maps[MapToLoad];
         lives = currentMap.LivesInLevel;
         gold = currentMap.StartingGold;
@@ -77,14 +78,19 @@ public class MapManager : MonoBehaviour {
                     prefab = Instantiate(prefab, new Vector3((float)i * -tile.X, (float)(tile.Y/2.0 + ((groundTile.Y*numOfGround))), (float)j * -tile.Z), Quaternion.Euler(0f, 0f, 0f));
                     tileGrid[i, j] = prefab;
 
-                    if (tile.Name == "Start")
+                    switch(tile.Name)
                     {
-                        StartTiles.Add(new Vector2((float)i, (float)j));
+                        case "Start":
+                            StartTiles.Add(new Vector2((float)i, (float)j));
+                            break;
+                        case "End":
+                            GoalTiles.Add(new Vector2((float)i, (float)j));
+                            break;
+                        case "Build":
+                            BuildTiles.Add(new Vector2((float)i, (float)j));
+                            break;
                     }
-                    if (tile.Name == "End")
-                    {
-                        GoalTiles.Add(new Vector2((float)i, (float)j));
-                    }
+                    
                     TileInfo prefabInfo = prefab.GetComponent<TileInfo>();
                     if (prefabInfo != null)
                     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MapManager), typeof(SpawnManager), typeof(GameSettingsManager))]
+[RequireComponent(typeof(TowerManager))]
 public class GameManager : MonoBehaviour {
     
     public static GameManager Instance;
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public MapManager mapManager { get; private set; }
     public SpawnManager spawnManager { get; private set; }
     public GameSettingsManager gameSettingsManager { get; private set; }
+    public TowerManager towerManager { get; private set; }
 
     //Set through editor
     public GridMapDB MapsDB;
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour {
             mapManager = GetComponent<MapManager>();
             spawnManager = GetComponent<SpawnManager>();
             gameSettingsManager = GetComponent<GameSettingsManager>();
+            towerManager = GetComponent<TowerManager>();
         }
         else if (Instance != this)
         {
