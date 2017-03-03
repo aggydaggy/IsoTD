@@ -25,7 +25,7 @@ public class TowerManager : MonoBehaviour {
             TowerBehavior towerBehavior = tile.Occupant.GetComponent<TowerBehavior>();
             if (towerBehavior != null)
             {
-                towerBehavior.SetInitialValues(towerToBuild);
+                towerBehavior.SetInitialValues(towerToBuild, tile.gameObject);
             }
             GameManager.Instance.mapManager.gold -= towerToBuild.BaseCost;
         }

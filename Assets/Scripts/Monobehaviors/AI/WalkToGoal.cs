@@ -7,7 +7,7 @@ using UnityEngine;
 public class WalkToGoal : MonoBehaviour {
 
     MapManager manager;
-    float speed;
+    EnemyBehavior enemyinfo;
     Vector2 targetTile;
     Vector3 targetPosition;
     Vector2 targetExit = Vector2.zero;
@@ -18,9 +18,9 @@ public class WalkToGoal : MonoBehaviour {
         manager = FindObjectOfType<MapManager>();
     }
 
-    public void SetValues(EnemyWave waveInfo, Vector2 beginTile)
+    public void SetValues(EnemyBehavior enemy, Vector2 beginTile)
     {
-        speed = waveInfo.Speed;
+        enemyinfo = enemy;
         targetTile = beginTile;
         SetNewTarget(targetTile);
     }
@@ -28,7 +28,7 @@ public class WalkToGoal : MonoBehaviour {
     private void Update()
     {
         Vector3 dir = targetPosition - transform.position;
-        float distanceToTravel = speed * Time.deltaTime;
+        float distanceToTravel = enemyinfo.speed * Time.deltaTime;
         if (dir.z > 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
@@ -43,6 +43,7 @@ public class WalkToGoal : MonoBehaviour {
             {
                 Destroy(gameObject);
                 GameManager.Instance.mapManager.lives -= 1;
+                GameManager.Instance.spawnManager.currentlyExistingEnemies.Remove(gameObject);
             }
             else
             {

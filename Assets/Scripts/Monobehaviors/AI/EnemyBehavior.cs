@@ -7,6 +7,7 @@ public class EnemyBehavior : MonoBehaviour {
     public Enemy baseEnemyStats { get; private set; }
     public EnemyWave waveStats { get; private set; }
     public double currentHealth { get; private set; }
+    public float speed { get; private set; }
     GameObject lastHitBy = null;
 
     public void SetInitialValues(EnemyWave waveValues, Enemy enemy)
@@ -14,6 +15,7 @@ public class EnemyBehavior : MonoBehaviour {
         baseEnemyStats = enemy;
         waveStats = waveValues;
         currentHealth = baseEnemyStats.BaseHealth + waveStats.HitPoints;
+        speed = baseEnemyStats.BaseSpeed + waveStats.Speed;
     }
 
 	// Use this for initialization
@@ -42,6 +44,7 @@ public class EnemyBehavior : MonoBehaviour {
         {
             lastHitBy.GetComponent<TowerBehavior>().GotAKill();
             GameManager.Instance.mapManager.gold += baseEnemyStats.BaseGold + waveStats.MoneyPerKill;
+            GameManager.Instance.spawnManager.currentlyExistingEnemies.Remove(gameObject);
         }
     }
 }

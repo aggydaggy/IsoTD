@@ -5,30 +5,30 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour {
 
     public int currentWave { get; private set; }
-    public int currentlyRunningWaves { get; private set; }
-    private List<EnemyWave> wavesCurrentlyRunning = new List<EnemyWave>();
+    public List<GameObject> currentlyExistingEnemies = new List<GameObject>();
+    public bool currentlySpawningEnemies { get; private set; }
 
     public void InitiateSpawner()
     {
         currentWave = 0;
-        currentlyRunningWaves = 0;
-        wavesCurrentlyRunning.Clear();
+        currentlyExistingEnemies = new List<GameObject>();
+        currentlySpawningEnemies = false;
     }
 
     private void Update()
     {
-        currentlyRunningWaves = wavesCurrentlyRunning.Count;
-        //DEBUG
-        if(Input.GetKeyDown(KeyCode.Return))
+        if(currentlyExistingEnemies.Count == 0 && !currentlySpawningEnemies)
         {
-            SpawnWave();
+            Time.timeScale = 1;
         }
     }
 
-    private void SpawnWave()
+    public void SpawnWave()
     {
         if (currentWave < GameManager.Instance.mapManager.currentMap.EnemyWaves.Length)
         {
+            GameManager.Instance.towerManager.SetTowerToBuild(null);
+            currentlySpawningEnemies = true;
             EnemyWave waveInfo = GameManager.Instance.mapManager.currentMap.EnemyWaves[currentWave];
             StartCoroutine(RunWave(waveInfo));
             currentWave++;
@@ -37,7 +37,6 @@ public class SpawnManager : MonoBehaviour {
 
     IEnumerator RunWave(EnemyWave wave)
     {
-        wavesCurrentlyRunning.Add(wave);
         WaitForSeconds spawnWait = new WaitForSeconds(wave.TimeBetweenSpawns);
         int spawnCount = wave.Count;
         for (int i = spawnCount; i >= 0; i--)
@@ -47,12 +46,14 @@ public class SpawnManager : MonoBehaviour {
                 Vector2 spawnTile = GameManager.Instance.mapManager.StartTiles[Random.Range(0, GameManager.Instance.mapManager.StartTiles.Count)];
                 GameObject spawnTileObject = GameManager.Instance.mapManager.GetTile((int)spawnTile.x, (int)spawnTile.y);
                 GameObject enemySpawned = Instantiate(wave.Enemies[j].BaseEnemy, spawnTileObject.transform.position + (Vector3.up * 2), Quaternion.Euler(0f, 0f, 0f));
+                EnemyBehavior enemyInfo = enemySpawned.GetComponent<EnemyBehavior>();
+                enemyInfo.SetInitialValues(wave, wave.Enemies[j]);
                 WalkToGoal enemyWalk = enemySpawned.GetComponent<WalkToGoal>();
-                enemyWalk.SetValues(wave, spawnTile);
-                enemySpawned.GetComponent<EnemyBehavior>().SetInitialValues(wave, wave.Enemies[j]);
+                enemyWalk.SetValues(enemyInfo, spawnTile);
+                currentlyExistingEnemies.Add(enemySpawned);
             }
             yield return spawnWait;
         }
-        wavesCurrentlyRunning.Remove(wave);
+        currentlySpawningEnemies = false;
     }
 }

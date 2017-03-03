@@ -14,17 +14,21 @@ public enum TargetPriority
 public class TowerBehavior : MonoBehaviour {
 
     GameObject target;
+    GameObject gridTile;
+    TileInfo gridTileInfo;
     Tower towerBase;
     bool isUpdating = false;
     TargetPriority targetPriority = TargetPriority.CLOSEST;
     public int kills { get; private set; }
 
-    public void SetInitialValues(Tower tower)
+    public void SetInitialValues(Tower tower, GameObject tilePos)
     {
         //Todo, use tile info to calculate the level of the tower initially.
         //Todo, set ammo effects initially.
         //Todo, generate random name?
         towerBase = tower;
+        gridTile = tilePos;
+        gridTileInfo = gridTile.GetComponent<TileInfo>();
     }
 
     private void UpdateTarget()
