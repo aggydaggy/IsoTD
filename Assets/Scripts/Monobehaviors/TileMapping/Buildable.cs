@@ -41,20 +41,19 @@ public class Buildable : MonoBehaviour {
                 {
                     Destroy(towerBehavior);
                 }
+                GameManager.Instance.towerManager.ShowNewTowerRange(previewTower.transform, GameManager.Instance.towerManager.towerToBuild.BaseRadius);
             }
         }
     }
 
     private void OnMouseExit()
     {
-        if (!EventSystem.current.IsPointerOverGameObject())
+        rend.material.color = defaultColor;
+        if (previewTower != null)
         {
-            rend.material.color = defaultColor;
-            if (previewTower != null)
-            {
-                Destroy(previewTower);
-                previewTower = null;
-            }
+            Destroy(previewTower);
+            GameManager.Instance.towerManager.StopShowingTowerRange();
+            previewTower = null;
         }
     }
 
@@ -63,6 +62,13 @@ public class Buildable : MonoBehaviour {
         if (tileInfo.Occupant == null && !EventSystem.current.IsPointerOverGameObject())
         {
             GameManager.Instance.towerManager.TryToBuildTower(tileInfo);
+            rend.material.color = defaultColor;
+            if (previewTower != null)
+            {
+                Destroy(previewTower);
+                GameManager.Instance.towerManager.StopShowingTowerRange();
+                previewTower = null;
+            }
         }
     }
 }
