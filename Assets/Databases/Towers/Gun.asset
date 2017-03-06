@@ -13,11 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Gun
   BaseCost: 425
-  BaseRadius: 60
+  BaseRadius: 45
   BaseTower: {fileID: 1661501331803772, guid: d8adc57bce3c35b43bf0e545f6ffb254, type: 2}
   BaseBullet: {fileID: 1010154205084612, guid: 277498538aa999844a5e2555293c130e, type: 2}
   BulletSpawnOffset: {x: -5, y: -6, z: 0}
-  TowerSelectPortrait: {fileID: 21300000, guid: 3cf2d4aa5f5e1894ca716be501520f83,
+  TowerSelectPortrait: {fileID: 21300000, guid: be9a090aa446a514da2f4afc6cc52e0d,
     type: 3}
   BaseBulletSpeed: 350
   TargetsRadius: 0
@@ -27,3 +27,8 @@ MonoBehaviour:
   BaseTimeBetweenShots: 0.5
   BaseDamage: 25
   ShotColor: {r: 0.772, g: 0.559, b: 0.028382335, a: 1}
+  BaseUpgradeCost: 250
+  CostIncreasePercent: 0.5
+  DamageIncreasePercent: 0.75
+  TimeBetweenShotsIncreasePercent: 0.2
+  RadiusIncreasePercent: 0.25

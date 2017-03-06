@@ -8,18 +8,29 @@ public enum TargetPriority
     CLOSEST,
     FURTHEST,
     STRONGEST,
-    WEAKEST
+    WEAKEST,
+    ALL
 }
 
 public class TowerBehavior : MonoBehaviour {
 
-    GameObject target;
+    List<GameObject> targets = new List<GameObject>();
     GameObject gridTile;
     TileInfo gridTileInfo;
-    Tower towerBase;
+    public Tower towerBase { get; private set; }
     bool isUpdating = false;
     TargetPriority targetPriority = TargetPriority.CLOSEST;
     public int kills { get; private set; }
+    public int level { get; private set; }
+    public float radius { get; private set; }
+    public float bulletSpeed { get; private set; }
+    public float aoeSpreadRadius { get; private set; }
+    public double aoeDamagePercentage { get; private set; }
+    public float timeBetweenShots { get; private set; }
+    public double damage { get; private set; }
+    public int costToUpgrade { get; private set; }
+
+    const float waitAfterChange = 3f;
 
     public void SetInitialValues(Tower tower, GameObject tilePos)
     {
@@ -29,13 +40,48 @@ public class TowerBehavior : MonoBehaviour {
         towerBase = tower;
         gridTile = tilePos;
         gridTileInfo = gridTile.GetComponent<TileInfo>();
+        if (towerBase.TargetsRadius)
+        {
+            targetPriority = TargetPriority.ALL;
+        }
+        level = 1;
+        SetStatsForLevel();
+    }
+
+    public void Upgrade()
+    {
+        level += 1;
+        SetStatsForLevel();
+        StartCoroutine(WaitAfterChange());
+    }
+
+    IEnumerator WaitAfterChange()
+    {
+        if (isUpdating) yield break;
+        isUpdating = true;
+        Color originalColor = gameObject.GetComponent<SpriteRenderer>().material.color;
+        gameObject.GetComponent<SpriteRenderer>().material.color = Color.Lerp(originalColor, Color.red, .5f);
+        yield return new WaitForSeconds(waitAfterChange);
+        isUpdating = false;
+        gameObject.GetComponent<SpriteRenderer>().material.color = originalColor;
+    }
+
+    private void SetStatsForLevel()
+    {
+        radius = towerBase.BaseRadius + (towerBase.BaseRadius * (float)(towerBase.RadiusIncreasePercent * (level-1)));
+        bulletSpeed = towerBase.BaseBulletSpeed;
+        aoeSpreadRadius = towerBase.BaseAoeSpreadRadius;
+        aoeDamagePercentage = towerBase.BaseAoeDamagePercentage;
+        timeBetweenShots = towerBase.BaseTimeBetweenShots - (towerBase.BaseTimeBetweenShots * (float)(towerBase.TimeBetweenShotsIncreasePercent * (level-1)));
+        damage = towerBase.BaseDamage + (towerBase.BaseDamage * (float)(towerBase.DamageIncreasePercent * (level-1)));
+        costToUpgrade = (int)(towerBase.BaseUpgradeCost + (towerBase.BaseUpgradeCost * (towerBase.CostIncreasePercent * ((level - 1)))));
     }
 
     private void UpdateTarget()
     {
         if (!isUpdating)
         {
-            if (target == null) target = null;
+            targets.Clear();
             GameObject closest = null;
             GameObject furthest = null;
             GameObject strongest = null;
@@ -52,16 +98,19 @@ public class TowerBehavior : MonoBehaviour {
             switch(targetPriority)
             {
                 case TargetPriority.CLOSEST:
-                    target = closest;
+                    targets.Add(closest);
                     break;
                 case TargetPriority.FURTHEST:
-                    target = furthest;
+                    targets.Add(furthest);
                     break;
                 case TargetPriority.STRONGEST:
-                    target = strongest;
+                    targets.Add(strongest);
                     break;
                 case TargetPriority.WEAKEST:
-                    target = weakest;
+                    targets.Add(weakest);
+                    break;
+                case TargetPriority.ALL:
+                    targets.AddRange(objectsByDistance);
                     break;
             }
         }
@@ -69,11 +118,14 @@ public class TowerBehavior : MonoBehaviour {
 
     private void ShootTarget()
     {
-        if(!isUpdating && target != null)
+        if(!isUpdating && targets.Count > 0)
         {
-            GameObject bullet = Instantiate(towerBase.BaseBullet,transform.position - towerBase.BulletSpawnOffset, Quaternion.Euler(0f, 0f, 0f));
-            bullet.GetComponent<SpriteRenderer>().color = towerBase.ShotColor;
-            bullet.GetComponent<BulletBehavior>().SetInitialValues(gameObject, towerBase, target);
+            for (int i = 0; i < targets.Count; i++)
+            {
+                GameObject bullet = Instantiate(towerBase.BaseBullet, transform.position - towerBase.BulletSpawnOffset, Quaternion.Euler(0f, 0f, 0f));
+                bullet.GetComponent<SpriteRenderer>().color = towerBase.ShotColor;
+                bullet.GetComponent<BulletBehavior>().SetInitialValues(gameObject, this, targets[i]);
+            }
         }
     }
 

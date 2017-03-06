@@ -374,4 +374,9 @@ public class MapManager : MonoBehaviour {
         }
         return null;
     }
+
+    public GameObject GetTile(Vector2 pos)
+    {
+        return GetTile((int)pos.x, (int)pos.y);
+    }
 }

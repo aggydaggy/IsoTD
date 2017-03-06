@@ -66,6 +66,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitParticle: {fileID: 1241345417342774, guid: da5d0c73553efcc47b47b971eedb36b7,
     type: 2}
+  splashParticle: {fileID: 1241345417342774, guid: 341c1b778da5d454ca97cbf1030ab0cf,
+    type: 2}
 --- !u!212 &212645688771212706
 SpriteRenderer:
   m_ObjectHideFlags: 1

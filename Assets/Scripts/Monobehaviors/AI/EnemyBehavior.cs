@@ -31,10 +31,16 @@ public class EnemyBehavior : MonoBehaviour {
         }
 	}
 
-    public void TakeHit(Tower hitterInfo, GameObject hitter)
+    public void TakeHit(TowerBehavior hitterInfo, GameObject hitter)
     {
         lastHitBy = hitter;
-        currentHealth -= hitterInfo.BaseDamage;
+        currentHealth -= hitterInfo.damage;
+    }
+
+    public void TakeSplashHit(TowerBehavior hitterInfo, GameObject hitter)
+    {
+        lastHitBy = hitter;
+        currentHealth -= hitterInfo.damage * hitterInfo.aoeDamagePercentage;
     }
 
     private void KillEnemy()

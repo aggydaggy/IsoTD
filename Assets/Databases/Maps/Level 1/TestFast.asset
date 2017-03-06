@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d151d150b72b98844b2b02a51c3b2ce1, type: 3}
   m_Name: TestFast
   m_EditorClassIdentifier: 
-  Count: 30
+  Count: 1
   TimeBetweenSpawns: 0.5
   MoneyPerKill: 50
   ExpPerKill: 50

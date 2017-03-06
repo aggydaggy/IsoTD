@@ -29,7 +29,7 @@ public class WalkToGoal : MonoBehaviour {
     {
         Vector3 dir = targetPosition - transform.position;
         float distanceToTravel = enemyinfo.speed * Time.deltaTime;
-        if (dir.z > 0)
+        if (dir.z > 0 || dir.x < 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
         }

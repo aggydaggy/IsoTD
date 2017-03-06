@@ -13,17 +13,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Sniper
   BaseCost: 1250
-  BaseRadius: 100
+  BaseRadius: 75
   BaseTower: {fileID: 1661501331803772, guid: 8786992d10c9edf4796c2dd111df22ba, type: 2}
   BaseBullet: {fileID: 1010154205084612, guid: 277498538aa999844a5e2555293c130e, type: 2}
   BulletSpawnOffset: {x: -6, y: -6, z: 0}
-  TowerSelectPortrait: {fileID: 21300000, guid: 79193fc0a23dd9248affa7d06d50d5d3,
+  TowerSelectPortrait: {fileID: 21300000, guid: c83433928a9e03740ba8654cb33f26c0,
     type: 3}
-  BaseBulletSpeed: 450
+  BaseBulletSpeed: 400
   TargetsRadius: 0
   DoesShotAoeSpread: 0
   BaseAoeSpreadRadius: 0
   BaseAoeDamagePercentage: 0
-  BaseTimeBetweenShots: 4
+  BaseTimeBetweenShots: 3
   BaseDamage: 125
   ShotColor: {r: 0.5514706, g: 0.8219074, b: 1, a: 1}
+  BaseUpgradeCost: 865
+  CostIncreasePercent: 0.8
+  DamageIncreasePercent: 1
+  TimeBetweenShotsIncreasePercent: 0.15
+  RadiusIncreasePercent: 0.5

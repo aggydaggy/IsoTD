@@ -33,10 +33,10 @@ public class Tilehighlight : MonoBehaviour {
                     tileRenderer.material.color = originalColor;
                     break;
                 case TileHighlightReason.TOWER_RANGE:
-                    tileRenderer.material.color = Color.Lerp(originalColor, TowerRange, Mathf.PingPong(Time.time, .5f));
+                    tileRenderer.material.color = Color.Lerp(originalColor, TowerRange, Mathf.PingPong(Time.time, 1f));
                     break;
                 case TileHighlightReason.UPGRADE_TOWER_RANGE:
-                    tileRenderer.material.color = Color.Lerp(originalColor, UpgradeTowerRange, Mathf.PingPong(Time.time, .5f));
+                    tileRenderer.material.color = Color.Lerp(originalColor, UpgradeTowerRange, Mathf.PingPong(Time.time, 1f));
                     break;
             }
 	}

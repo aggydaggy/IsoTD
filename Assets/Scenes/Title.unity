@@ -796,10 +796,10 @@ RectTransform:
   m_Father: {fileID: 2010085744}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -7}
+  m_SizeDelta: {x: 156, y: 49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &453428259
 MonoBehaviour:
@@ -3090,7 +3090,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1045889460
+  randomSeed: 418724978
   InitialModule:
     serializedVersion: 3
     enabled: 1

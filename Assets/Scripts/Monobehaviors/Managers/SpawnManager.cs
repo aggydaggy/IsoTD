@@ -39,7 +39,7 @@ public class SpawnManager : MonoBehaviour {
     {
         WaitForSeconds spawnWait = new WaitForSeconds(wave.TimeBetweenSpawns);
         int spawnCount = wave.Count;
-        for (int i = spawnCount; i >= 0; i--)
+        for (int i = spawnCount; i > 0; i--)
         {
             for (int j = 0; j < wave.Enemies.Length; j++)
             {
@@ -51,6 +51,7 @@ public class SpawnManager : MonoBehaviour {
                 WalkToGoal enemyWalk = enemySpawned.GetComponent<WalkToGoal>();
                 enemyWalk.SetValues(enemyInfo, spawnTile);
                 currentlyExistingEnemies.Add(enemySpawned);
+                yield return new WaitForSeconds(Random.Range(0.01f, 0.2f));
             }
             yield return spawnWait;
         }

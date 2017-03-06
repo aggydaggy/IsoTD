@@ -10,6 +10,15 @@ public class TowerManager : MonoBehaviour {
 
     List<GameObject> towerRangeTiles = new List<GameObject>();
 
+    private void Update()
+    {
+        if (towerToBuild != null && towerToBuild.BaseCost > GameManager.Instance.mapManager.gold)
+        {
+            towerToBuild = null;
+            StopShowingTowerRange();
+        }
+    }
+
     public void SetTowerToBuild(Tower tower)
     {
         towerToBuild = tower;

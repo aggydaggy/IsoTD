@@ -13,11 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Gasser
   BaseCost: 1000
-  BaseRadius: 35
+  BaseRadius: 25
   BaseTower: {fileID: 1661501331803772, guid: 3517a2e6de586cb4caf4a0a80ec4b313, type: 2}
   BaseBullet: {fileID: 1010154205084612, guid: 277498538aa999844a5e2555293c130e, type: 2}
   BulletSpawnOffset: {x: -1.8, y: -7.75, z: 0}
-  TowerSelectPortrait: {fileID: 21300000, guid: 60a28659a5dc6f441a856bb40bc58e4e,
+  TowerSelectPortrait: {fileID: 21300000, guid: 177fa176908af954e9bd9e457a612f63,
     type: 3}
   BaseBulletSpeed: 150
   TargetsRadius: 1
@@ -25,5 +25,10 @@ MonoBehaviour:
   BaseAoeSpreadRadius: 0
   BaseAoeDamagePercentage: 0
   BaseTimeBetweenShots: 1.5
-  BaseDamage: 50
+  BaseDamage: 35
   ShotColor: {r: 0, g: 0.722, b: 0, a: 1}
+  BaseUpgradeCost: 500
+  CostIncreasePercent: 0.5
+  DamageIncreasePercent: 0.8
+  TimeBetweenShotsIncreasePercent: 0.2
+  RadiusIncreasePercent: 0.5

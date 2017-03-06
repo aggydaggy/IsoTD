@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Build
   X: 8
-  Y: 4
+  Y: 2
   Z: 8
   Tile: {fileID: 1634683043207318, guid: 158340c6d64c5cf47a26494181fdea67, type: 2}

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d151d150b72b98844b2b02a51c3b2ce1, type: 3}
+  m_Name: Floatbots
+  m_EditorClassIdentifier: 
+  Count: 10
+  TimeBetweenSpawns: 1
+  MoneyPerKill: 15
+  ExpPerKill: 0
+  Speed: 15
+  HitPoints: 10
+  Enemies:
+  - {fileID: 11400000, guid: 010364d42af793746b4bf60ea2fcd065, type: 2}
+  - {fileID: 11400000, guid: 0ee8de9800866e941bfeafbf6ff807d3, type: 2}
+  - {fileID: 11400000, guid: 010364d42af793746b4bf60ea2fcd065, type: 2}
